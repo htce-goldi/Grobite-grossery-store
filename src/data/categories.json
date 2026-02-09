@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1",
+    "name": "Fresh Produce",
+    "icon": "/images/products/Fresh-Product.png"
+  },
+  {
+    "id": "2",
+    "name": "Vegetables",
+    "icon": "/images/products/Herb-&-Spices.png"
+  },
+  {
+    "id": "3",
+    "name": "Dairy & Eggs",
+    "icon": "/images/products/Dairy-&-Eggs.png"
+  },
+  {
+    "id": "4",
+    "name": "Meat & Poultry",
+    "icon": "/images/products/Meat-&-Poultry.png"
+  },
+  {
+    "id": "5",
+    "name": "Beverages",
+    "icon": "/images/products/Beverages.png"
+  },
+  {
+    "id": "6",
+    "name": "Bakery",
+    "icon": "/images/products/Bakery.png"
+  },
+  {
+    "id": "7",
+    "name": "Frozen Foods",
+    "icon": "/images/products/Frozen-Foods.png"
+  },
+  {
+    "id": "8",
+    "name": "Canned Goods",
+    "icon": "/images/products/Conned-Goods.png"
+  },
+  {
+    "id": "9",
+    "name": "Snacks & Confectionery",
+    "icon": "/images/products/Fresh-Product.png"
+  },
+  {
+    "id": "10",
+    "name": "Household Essentials",
+    "icon": "/images/products/Herb-&-Spices.png"
+  },
+  {
+    "id": "11",
+    "name": "personal Care & Health",
+    "icon": "/images/products/Dairy-&-Eggs.png"
+  },
+  {
+    "id": "12",
+    "name": "Meat & Poultry",
+    "icon": "/images/products/Meat-&-Poultry.png"
+  },
+  {
+    "id": "13",
+    "name": "Papper & Beverages",
+    "icon": "/images/products/Beverages.png"
+  },
+  {
+    "id": "14",
+    "name": "Bakery & Bread",
+    "icon": "/images/products/Bakery.png"
+  },
+  {
+    "id": "15",
+    "name": "Grean Beans",
+    "icon": "/images/products/Frozen-Foods.png"
+  },
+  {
+    "id": "16",
+    "name": "Potatoes",
+    "icon": "/images/products/Conned-Goods.png"
+  }
+
+
+
+  
+]

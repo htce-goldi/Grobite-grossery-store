@@ -1,0 +1,153 @@
+[
+  {
+    "id": 1,
+    "title": "Pepper 500g",
+    "category": "Vegetables",
+    "price": 540,
+    "oldPrice": 620,
+    "image": "/images/product-images/Pepper.png"
+  },
+  {
+    "id": 2,
+    "title": "Broccoli 1kg",
+    "category": "Vegetables",
+    "price": 1200,
+    "image": "/images/product-images/Broccoli.png"
+  },
+  {
+    "id": 3,
+    "title": "Potatoes 2kg",
+    "category": "Vegetables",
+    "price": 850,
+    "oldPrice": 980,
+    "image": "/images/product-images/Potato.png"
+  },
+  {
+    "id": 4,
+    "title": "Cherry 5pcs",
+    "category": "Fruits",
+    "price": 1500,
+    "image": "/images/product-images/Cherry.png"
+  },
+  {
+    "id": 5,
+    "title": "Green Beans 250g",
+    "category": "Vegetables",
+    "price": 980,
+    "image": "/images/product-images/Green-Beans.png"
+  },
+  {
+    "id": 6,
+    "title": "Corn 1kg",
+    "category": "Vegetables",
+    "price": 275,
+    "image": "/images/product-images/Corn.png"
+  },
+
+  {
+    "id": 7,
+    "title": "Pepper 500g",
+    "category": "Vegetables",
+    "price": 540,
+    "oldPrice": 620,
+    "image": "/images/product-images/Pepper.png"
+  },
+  {
+    "id": 8,
+    "title": "Broccoli 1kg",
+    "category": "Vegetables",
+    "price": 1200,
+    "image": "/images/product-images/Broccoli.png"
+  },
+  {
+    "id": 9,
+    "title": "Potatoes 2kg",
+    "category": "Vegetables",
+    "price": 850,
+    "oldPrice": 980,
+    "image": "/images/product-images/Potato.png"
+  },
+  {
+    "id": 10,
+    "title": "Cherry 5pcs",
+    "category": "Fruits",
+    "price": 1500,
+    "image": "/images/product-images/Cherry.png"
+  },
+  {
+    "id": 11,
+    "title": "Green Beans 250g",
+    "category": "Vegetables",
+    "price": 980,
+    "image": "/images/product-images/Green-Beans.png"
+  },
+  {
+    "id": 12,
+    "title": "Corn 1kg",
+    "category": "Vegetables",
+    "price": 275,
+    "image": "/images/product-images/Corn.png"
+  },
+
+  {
+    "id": 13,
+    "title": "Pepper 500g",
+    "category": "Vegetables",
+    "price": 540,
+    "oldPrice": 620,
+    "image": "/images/product-images/Pepper.png"
+  },
+  {
+    "id": 14,
+    "title": "Broccoli 1kg",
+    "category": "Vegetables",
+    "price": 1200,
+    "image": "/images/product-images/Broccoli.png"
+  },
+  {
+    "id": 15,
+    "title": "Potatoes 2kg",
+    "category": "Vegetables",
+    "price": 850,
+    "oldPrice": 980,
+    "image": "/images/product-images/Potato.png"
+  },
+  {
+    "id": 16,
+    "title": "Cherry 5pcs",
+    "category": "Fruits",
+    "price": 1500,
+    "image": "/images/product-images/Cherry.png"
+  },
+  {
+    "id": 17,
+    "title": "Green Beans 250g",
+    "category": "Vegetables",
+    "price": 980,
+    "image": "/images/product-images/Green-Beans.png"
+  },
+  {
+    "id": 18,
+    "title": "Corn 1kg",
+    "category": "Vegetables",
+    "price": 275,
+    "image": "/images/product-images/Corn.png"
+  },
+   {
+    "id": 18,
+    "title": "papper 250g",
+    "category": "Vagetables",
+    "price": 390,
+    "oldPrice": 450,
+    "image": "/images/product-images/Pepper.png"
+  },
+
+  {
+    "id": 19,
+    "title": "Broccoli 1kg",
+    "category": "Vagetables",
+    "price": 210,
+    "oldPrice": 600,
+    "image": "/images/product-images/Broccoli.png"
+  }
+]
