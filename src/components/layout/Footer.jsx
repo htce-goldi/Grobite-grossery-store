@@ -8,7 +8,7 @@ import {
     Instagram,
     Facebook,
 } from "react-bootstrap-icons";
-import logo from "/images/logo/logo.svg";
+import logo from "/images/logo/Footer-logo.svg";
 
 export default function Footer() {
     return (

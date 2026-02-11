@@ -2,8 +2,7 @@ import {
   authStart,
   authSuccess,
   authFailure,
-} from "../../redux/slices/authSlice"; 
-
+} from "../../redux/slices/authSlice";
 import { notify } from "../../redux/slices/notificationSlice";
 export const signupUser =
   ({ fullName, email, password }) =>
@@ -13,25 +12,28 @@ export const signupUser =
 
       await new Promise((r) => setTimeout(r, 800));
 
-      if (!email || !password || !fullName) {
+      if (!fullName || !email || !password) {
         throw new Error("All fields are required");
       }
 
       const user = {
         id: Date.now(),
-        name: fullName,
+        name: fullName,   
         email,
+        password,      
       };
 
       localStorage.setItem("user", JSON.stringify(user));
-
       dispatch(authSuccess(user));
+
       dispatch(
         notify({
-          message: "Account created successfully 🎉",
+          message: "Account created successfully ",
           type: "success",
         })
       );
+
+      return { success: true };
     } catch (err) {
       dispatch(authFailure(err.message));
       dispatch(
@@ -40,11 +42,12 @@ export const signupUser =
           type: "error",
         })
       );
+      return { success: false };
     }
   };
 
 export const loginUser =
-  ({ name, email, password }) =>
+  ({ email, password }) =>
   async (dispatch) => {
     try {
       dispatch(authStart());
@@ -55,21 +58,29 @@ export const loginUser =
         throw new Error("Email & password required");
       }
 
-      const user = {
-        id: Date.now(),
-        name,
-        email,
-      };
+      const storedUser = JSON.parse(localStorage.getItem("user"));
 
-      localStorage.setItem("user", JSON.stringify(user));
+      if (!storedUser) {
+        throw new Error("Please register first");
+      }
 
-      dispatch(authSuccess(user));
+      if (
+        storedUser.email !== email ||
+        storedUser.password !== password
+      ) {
+        throw new Error("Invalid email or password");
+      }
+
+      dispatch(authSuccess(storedUser));
+
       dispatch(
         notify({
-          message: "Login successful ",
+          message: "Login successfully",
           type: "success",
         })
       );
+
+      return { success: true };
     } catch (err) {
       dispatch(authFailure(err.message));
       dispatch(
@@ -78,5 +89,6 @@ export const loginUser =
           type: "error",
         })
       );
+      return { success: false };
     }
   };

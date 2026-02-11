@@ -1,105 +1,104 @@
-import React, { useRef } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { ChevronRight, Cart } from "react-bootstrap-icons";
+import DealsSection from "../components/home/DealSection";
+import Footer from "../components/layout/Footer";
 
-import dealsCategories from "../components/categories/dealsCategories";
-import ProductCard from "../components/layout/ProductCard";
-import CartSummary from "../components/cart/CartSummery";
-import productList from "../data/productList.json";
+const deals = Array.from({ length: 9 });
 
 export default function Deals() {
-  const { category } = useParams();
-  const sliderRef = useRef(null);
+  const [time, setTime] = useState(2 * 3600 + 28 * 60 + 26);
 
-  const dealProducts = productList.filter(
-    (item) => item.discount && item.discount > 0
-  );
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
-  const filteredDeals = category
-    ? dealProducts.filter(
-        (p) =>
-          p.category.toLowerCase().replace(/ /g, "-") === category
-      )
-    : dealProducts;
-
-  const scrollLeft = () => {
-    sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
-  };
+  const hours = String(Math.floor(time / 3600)).padStart(2, "0");
+  const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
+  const seconds = String(time % 60).padStart(2, "0");
 
   return (
-    <Container fluid className="shop-page bg-light py-4">
-      <Row className="gx-3">
+    <>
+      <Container className="py-4">
 
-        <Col xl={2} lg={3} md={4} className="mb-3">
-          <dealsCategories />
-        </Col>
+        <div className="gd-breadcrumb mb-3">
+          <span>Home</span>
+          <ChevronRight size={14} />
+          <span className="gd-breadcrumb-active">Deals</span>
+        </div>
 
-        <Col xl={7} lg={6} md={8}>
+        <Row className="align-items-center mb-4">
+          <Col md={4}>
+            <h3 className="fw-bold">Grobite Deals!!!</h3>
+          </Col>
+          <Col md={8}>
+            <Form className="d-flex">
+              <Form.Control placeholder="Find what you need..." />
+              <Button className="gd-search-btn ms-2">Search</Button>
+            </Form>
+          </Col>
+        </Row>
 
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <h5 className="fw-bold mb-0">Grobite Deals!!!</h5>
+        <div className="gd-wrapper p-4 rounded">
+          <div className="gd-header mb-4 d-flex justify-content-between align-items-center">
+            <div>
+              <h4 className="fw-bold">Deals of the Day</h4>
+              <small>Refreshes daily</small>
+            </div>
 
-            <div className="d-flex gap-2 text-center">
-              <div className="deal-timer-box p-2 bg-white shadow rounded">
-                02<br /><small>HRS</small>
+            <div className="gd-countdown">
+              <div className="gd-time">
+                <span>{hours}</span>
+                <span className="gd-colon">:</span>
+                <span>{minutes}</span>
+                <span className="gd-colon">:</span>
+                <span>{seconds}</span>
               </div>
-              <div className="deal-timer-box p-2 bg-white shadow rounded">
-                28<br /><small>MIN</small>
-              </div>
-              <div className="deal-timer-box p-2 bg-white shadow rounded">
-                26<br /><small>SEC</small>
+              <div className="gd-labels">
+                <span>HOURS</span>
+                <span>MINS</span>
+                <span>SECS</span>
               </div>
             </div>
           </div>
+          <Row>
+            {deals.map((_, i) => (
+              <Col lg={4} md={6} key={i} className="mb-4">
+                <div className="gd-card d-flex align-items-center">
 
-          <div className="position-relative">
+                  <span className="gd-discount">27% Discount</span>
 
-            <Button
-              variant="light"
-              className="deal-arrow position-absolute top-50 start-0 translate-middle-y shadow-sm"
-              onClick={scrollLeft}
-              style={{ zIndex: 2 }}
-            >
-              <ChevronLeft />
-            </Button>
+                  <img
+                    src="/images/product-images/Broccoli.png"
+                    alt="Broccoli"
+                    className="gd-img"
+                  />
 
-            <Button
-              variant="light"
-              className="deal-arrow position-absolute top-50 end-0 translate-middle-y shadow-sm"
-              onClick={scrollRight}
-              style={{ zIndex: 2 }}
-            >
-              <ChevronRight />
-            </Button>
+                  <div className="gd-content">
+                    <small className="text-muted">Vegetables</small>
+                    <h6>Broccoli 1kg</h6>
 
-            <div
-              ref={sliderRef}
-              className="d-flex gap-3 overflow-auto pb-2"
-              style={{ scrollBehavior: "smooth" }}
-            >
-              {filteredDeals.length > 0 ? (
-                filteredDeals.map((item) => (
-                  <div key={item.id} style={{ minWidth: "220px" }}>
-                    <ProductCard product={item} />
+                    <p className="gd-price">
+                      ₹540 <span>₹740</span>
+                    </p>
+
+                    <Button className="gd-add-btn w-100">
+                      <Cart size={12} className="me-2" />
+                      Add to Cart
+                    </Button>
                   </div>
-                ))
-              ) : (
-                <p>No deals available</p>
-              )}
-            </div>
-          </div>
-        </Col>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </div>
+        <DealsSection />
 
-        <Col xl={3} lg={3} className="d-none d-lg-block">
-          <CartSummary />
-        </Col>
-
-      </Row>
-    </Container>
+      </Container>
+      <Footer />
+    </>
   );
 }

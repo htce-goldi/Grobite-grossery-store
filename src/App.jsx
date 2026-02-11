@@ -10,6 +10,7 @@ import ProductDetails from "./pages/ProductDetails.jsx";
 import Cart from "./pages/Cart.jsx";
 import Deals from "./pages/Deals.jsx";
 import Login from "./pages/Login";
+import Register from "./pages/Register.jsx"
 
 
 import Categories from "./pages/Categories.jsx";
@@ -35,7 +36,7 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/deals" element={<Deals />} />
         <Route path="/login" element={<Login />} />
-
+         <Route path="/signup" element={<Register />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categoriesproduct" element={<CategoriesProducts />} />
         <Route path="/explorecategories" element={<ExploreCategories />} />
@@ -43,7 +44,7 @@ export default function App() {
         <Route
           path="/featuredproducts" element={<FeaturedProducts />}
         />
-
+  
       </Routes>
 
     </>

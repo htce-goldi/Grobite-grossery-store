@@ -1,5 +1,7 @@
 import { Nav, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import { ChevronDown } from "react-bootstrap-icons";
+import { useState } from "react";
 
 const categories = [
   "Fresh Produce",
@@ -18,56 +20,104 @@ export default function ShopCategories() {
   const navigate = useNavigate();
   const { category } = useParams();
 
-  const RightRadio = ({ label, name }) => (
-    <div className="d-flex justify-content-between align-items-center mb-3">
-      <span className="text-dark">{label}</span>
-      <Form.Check type="radio" name={name} />
+  const [open, setOpen] = useState({
+    categories: true,
+    availability: true,
+    prices: true,
+    diet: true,
+  });
+
+  const RadioRow = ({ label, name, checked }) => (
+    <div className="filter-radio">
+      <span>{label}</span>
+      <Form.Check type="radio" name={name} checked={checked} readOnly />
     </div>
   );
 
   return (
-    <div className="bg-white p-3 border rounded shop-sidebar">
-      {/* ================= CATEGORIES ================= */}
-      <h6 className="mb-3 fw-bold">Categories</h6>
+    <aside className="filter-sidebar">
+      <div className="filter-header">
+        <span><h6>Filters</h6></span>
+      </div>
+      <div className={`filter-section ${open.categories ? "open" : "closed"}`}>
+        <div
+          className="filter-section-title"
+          onClick={() =>
+            setOpen({ ...open, categories: !open.categories })
+          }
+        >
+          <span>Categories</span>
+          <ChevronDown size={14} />
+        </div>
 
-      <Nav className="flex-column gap-2 mb-4">
-        {categories.map((cat) => {
-          const slug = cat.toLowerCase().replace(/ /g, "-");
-          return (
-            <Nav.Link
-              key={cat}
-              onClick={() => navigate(`/shop/${slug}`)}
-              className={`p-0 text-dark ${
-                category === slug ? "fw-bold" : ""
-              }`}
-              style={{ cursor: "pointer" }}
-            >
-              {cat}
-            </Nav.Link>
-          );
-        })}
-      </Nav>
+        <div className="filter-body">
+          {categories.map((cat) => {
+            const slug = cat.toLowerCase().replace(/ /g, "-");
+            return (
+              <div
+                key={cat}
+                className="filter-radio category-radio"
+                onClick={() => navigate(`/shop/${slug}`)}
+              >
+                <span>{cat}</span>
+                <Form.Check
+                  type="radio"
+                  name="category"
+                  checked={category === slug}
+                  readOnly
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className={`filter-section ${open.availability ? "open" : "closed"}`}>
+        <div
+          className="filter-section-title"
+          onClick={() =>
+            setOpen({ ...open, availability: !open.availability })
+          }
+        >
+          <span>Availability</span>
+          <ChevronDown size={14} />
+        </div>
 
-      {/* ================= AVAILABILITY ================= */}
-      <h6 className="mb-2 fw-bold">Availability</h6>
-      <div className="mb-4">
-        <RightRadio label="In-stock" name="availability" />
-        <RightRadio label="Out-of-stock" name="availability" />
+        <div className="filter-body">
+          <RadioRow label="In-stock" name="availability" />
+          <RadioRow label="Out-of-stock" name="availability" />
+        </div>
       </div>
 
-      {/* ================= PRICES ================= */}
-      <h6 className="mb-2 fw-bold">Prices</h6>
-      <div className="mb-4">
-        <RightRadio label="Sales" name="price" />
-        <RightRadio label="Discounted" name="price" />
+      <div className={`filter-section ${open.prices ? "open" : "closed"}`}>
+        <div
+          className="filter-section-title"
+          onClick={() => setOpen({ ...open, prices: !open.prices })}
+        >
+          <span>Prices</span>
+          <ChevronDown size={14} />
+        </div>
+
+        <div className="filter-body">
+          <RadioRow label="Sales" name="price" />
+          <RadioRow label="Discounted" name="price" />
+        </div>
       </div>
 
-      {/* ================= DIET TYPE ================= */}
-      <h6 className="mb-2 fw-bold">Diet Type</h6>
-      <div className="mb-2">
-        <RightRadio label="Vegan" name="diet" />
-        <RightRadio label="Non-vegan" name="diet" />
+      <div className={`filter-section ${open.diet ? "open" : "closed"}`}>
+        <div
+          className="filter-section-title"
+          onClick={() => setOpen({ ...open, diet: !open.diet })}
+        >
+          <span>Diet Type</span>
+          <ChevronDown size={14} />
+        </div>
+
+        <div className="filter-body">
+          <RadioRow label="Vegan" name="diet" />
+          <RadioRow label="Non-vegan" name="diet" />
+        </div>
       </div>
-    </div>
+
+    </aside>
   );
 }
